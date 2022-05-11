@@ -1,0 +1,59 @@
+<form [formGroup]="updateForm" (ngSubmit)="update()">
+
+    <div>
+        <label for="id">Company</label>
+        <div>
+            <input type="number" id="id" [formControlName]="'id'" name="id" required
+                autofocus>
+        </div>
+    </div>
+
+    <div>
+        <label for="firstName">Firstname</label>
+        <div>
+            <input type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
+                autofocus>
+        </div>
+    </div>
+    <div>
+        <label for="lastName">Lastname</label>
+        <div>
+            <input type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
+                autofocus>
+        </div>
+    </div>
+    <div>
+        <label for="companyId">Company</label>
+        <div>
+            <input type="number" id="companyId" [formControlName]="'companyId'" name="companyId" required
+                autofocus>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <div>
+            <input type="text" id="email" [formControlName]="'email'" name="email" required
+                autofocus>
+        </div>
+    </div>
+    <div>
+        <label for="phoneNumber">Phonenumber</label>
+        <div>
+            <input type="text" id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
+                autofocus>
+        </div>
+    </div>
+    <div>
+        <label for="comment">Comment</label>
+        <div>
+            <input type="text" id="comment" [formControlName]="'comment'" name="comment" required
+                autofocus>
+        </div>
+    </div>
+
+    <span>
+        <button type="submit">
+            Update
+        </button>
+    </span>            
+</form>

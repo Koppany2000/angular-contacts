@@ -1,0 +1,16 @@
+<form [formGroup]="deleteForm" (ngSubmit)="deleteContact()">
+
+    <div>
+        <label for="id">Company</label>
+        <div>
+            <input type="number" id="id" [formControlName]="'id'" name="id" required
+                autofocus>
+        </div>
+    </div>
+
+    <span>
+        <button type="submit">
+            Update
+        </button>
+    </span>            
+</form>

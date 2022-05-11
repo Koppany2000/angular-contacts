@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group row">
+        <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
+        <div class="col-md-6">
+            <input type="text" id="user_name" class="form-control" [formControlName]="'username'" name="user_name" required
+                autofocus>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+        <div class="col-md-6">
+            <input type="password" id="password" class="form-control" [formControlName]="'password'" name="password" required>
+        </div>
+    </div>
+
+    <span class="col-md-6 offset-md-4">
+        <button type="submit" class="login">
+            Login
+        </button>
+    </span>   
+                   
+</form>
