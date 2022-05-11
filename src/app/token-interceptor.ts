@@ -9,15 +9,15 @@ import { AuthService } from './auth-service.service';
 })
 export class TokenInterceptor implements HttpInterceptor {
 
-   
-
     isTokenRefreshing = false;
     refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject(null);
     constructor(public authService: AuthService) { }
 
     intercept(req: HttpRequest<any>,
         next: HttpHandler): Observable<HttpEvent<any>> {
-
+            if(req.headers.get("skip")){
+                return next.handle(req);
+            }
             let tokenizedReq = req.clone({
                 setHeaders:{
                     Authorization:`Bearer ${this.authService.getJwtToken()}`
@@ -25,29 +25,5 @@ export class TokenInterceptor implements HttpInterceptor {
             })
             console.log(tokenizedReq.headers);
             return next.handle(tokenizedReq);
-        /*
-        if (this.authService.getJwtToken()) {
-            this.addToken(req, this.authService.getJwtToken());
-            
-        }
-        console.log(req.headers)
-        return next.handle(req);
-        */
     }
-    
- /*   private addToken(req: HttpRequest<any>, jwtToken: string) {
-        
-        return req.clone({
-            headers: req.headers.set('Authorization',
-                'Bearer ' + jwtToken)
-        });
-    }
-    */
-    
-    
-    
-    
-   
-
-
 }

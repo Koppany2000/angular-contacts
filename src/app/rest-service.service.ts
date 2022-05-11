@@ -15,9 +15,8 @@ export class RestServiceService {
 
 
 
-  get():Observable<Contacts[]>{
-  
-    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/');
+  get(id:number):Observable<Contacts[]>{
+    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/?pageNo='+id);
   }
   post(postPayload:PostPayload): Observable<boolean>{
     return this.httpClient.post<boolean>('http://localhost:8080/api/contacts/',postPayload);

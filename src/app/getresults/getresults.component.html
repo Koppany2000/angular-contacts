@@ -1,3 +1,20 @@
+
+<form [formGroup]="getresultsForm" (ngSubmit)="getResults()">
+
+    <div>
+        <label for="id">id</label>
+        <div>
+            <input type="number" id="id" [formControlName]="'id'" name="id" required
+                autofocus>
+        </div>
+    </div>
+
+    <span>
+        <button type="submit">
+            Update
+        </button>
+    </span>            
+</form>
 <ul>
     <li *ngFor="let contact of contacts">{{contact.fullName}}</li>
 </ul>

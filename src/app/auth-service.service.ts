@@ -16,12 +16,16 @@ export class AuthService {
   ) { }
 
   login(loginRequestPayload:LoginRequestPayload): Observable<boolean>{
-    return this.httpClient.post<LoginResponse>('http://localhost:8080/login',loginRequestPayload)
+    return this.httpClient.post<LoginResponse>('http://localhost:8080/login',loginRequestPayload,{headers:{skip:"true"}})
     .pipe(map(data => {
       this.localStorage.store('authenticationToken',data.jwt);
       
       return true;
     }));
+  }
+  logout(): void{
+    console.log("hi");
+    this.localStorage.clear('authenticationToken');
   }
   getJwtToken() {
     return this.localStorage.retrieve('authenticationToken');

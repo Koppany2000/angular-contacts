@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Contacts } from '../Contacts';
 import { RestServiceService } from '../rest-service.service';
 
@@ -10,12 +12,14 @@ import { RestServiceService } from '../rest-service.service';
 export class GetresultsComponent implements OnInit {
 
   contacts:Contacts[];
-  constructor(private restService:RestServiceService) { }
+  getresultsForm:FormGroup;
+  constructor(private restService:RestServiceService,private router:Router) { }
 
   ngOnInit(): void {
-    this.get();
+    this.getresultsForm= new FormGroup({
+      id:new FormControl('')});
   }
-
+/*
   public get():void{
     this.restService.get().subscribe(
       (response:Contacts[])=> {
@@ -24,5 +28,22 @@ export class GetresultsComponent implements OnInit {
     );
 
   }
+  */
+
+  getResults(){
+    
+    
+    
+    this.restService.get(this.getresultsForm.get('id').value).subscribe(data => {
+      this.contacts=data;
+      if(data){
+        this.router.navigateByUrl('/getResults');
+      }
+      else{
+        
+      }
+    });
+
+}
 
 }
