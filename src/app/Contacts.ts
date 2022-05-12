@@ -3,5 +3,5 @@ export interface Contacts{
     fullName:string;
     companyName:string;
     email:string;
-    phonenumber:string;
+    phoneNumber:string;
 }

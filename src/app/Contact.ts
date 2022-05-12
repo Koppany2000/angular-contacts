@@ -4,7 +4,7 @@ export interface Contact{
     companyName:string;
     email:string;
     dateOfCreation:string;
-    phonenumber:string;
+    phoneNumber:string;
     lastName:string;
     dateOfLastModification:string;
     comment:string;

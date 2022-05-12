@@ -51,7 +51,7 @@ export class UpdatecontactComponent implements OnInit {
     
     this.restService.update(this.updatePayload).subscribe(data => {
       if(data){
-        this.router.navigateByUrl('/getResults');
+        this.router.navigateByUrl('/getSingle');
       }
       else{
         

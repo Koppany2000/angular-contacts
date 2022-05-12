@@ -1,7 +1,7 @@
 <form [formGroup]="singleForm" (ngSubmit)="getSingle()">
 
     <div>
-        <label for="id">Id</label>
+        <label for="id">id</label>
         <div>
             <input type="number" id="id" [formControlName]="'id'" name="id" required
                 autofocus>
@@ -9,14 +9,34 @@
     </div>
 
     <span>
-        <button type="submit">
-            Update
+        <button class="btn btn-primary" type="submit">
+            GetSingle
         </button>
     </span>            
 </form>
 
-<table></table>
-{{contact.firstName}} {{contact.lastName}} {{contact.dateOfCreation}} {{contact.dateOfLastModification}} {{contact.email}} {{contact.phonenumber}} 
-{{contact.companyName}}
+<ng-container *ngIf="updatePressed">
+
+
+<table width="100%" class="table table-success table-striped table-hover">
+    <tr>
+        <th>LastName</th>
+        <th>FirstName</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>CompanyName</th>
+    </tr>
+    <tr>
+        <td>{{contact.lastName}}</td>
+        <td>{{contact.firstName}}</td>
+        <td>{{contact.email}} </td>
+        <td>{{contact.phoneNumber}} </td>
+        <td>{{contact.companyName}}</td>
+    </tr>
+   
+
+
+</table>
+</ng-container>
 
     

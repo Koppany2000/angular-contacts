@@ -18,11 +18,8 @@ export class DeletecontactComponent implements OnInit {
       id:new FormControl('')});
 
   }
-
   deleteContact(){
-    
-    
-    
+
     this.restService.delete(this.deleteForm.get('id').value).subscribe(data => {
       if(data){
         this.router.navigateByUrl('/getResults');

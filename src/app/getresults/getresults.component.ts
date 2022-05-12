@@ -11,6 +11,7 @@ import { RestServiceService } from '../rest-service.service';
 })
 export class GetresultsComponent implements OnInit {
 
+  updatePressed:boolean=false;
   contacts:Contacts[];
   getresultsForm:FormGroup;
   constructor(private restService:RestServiceService,private router:Router) { }
@@ -19,31 +20,15 @@ export class GetresultsComponent implements OnInit {
     this.getresultsForm= new FormGroup({
       id:new FormControl('')});
   }
-/*
-  public get():void{
-    this.restService.get().subscribe(
-      (response:Contacts[])=> {
-        this.contacts=response;
-      }
-    );
-
-  }
-  */
-
   getResults(){
-    
-    
-    
+    this.updatePressed=true;
     this.restService.get(this.getresultsForm.get('id').value).subscribe(data => {
       this.contacts=data;
       if(data){
         this.router.navigateByUrl('/getResults');
       }
       else{
-        
       }
     });
-
 }
-
 }

@@ -11,7 +11,7 @@ import { LoginRequestPayload } from '../LoginRequestPayload';
 })
 export class LoginComponent implements OnInit {
 
-  
+
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     
     this.authService.login(this.loginRequestPayload).subscribe(data => {
         this.router.navigateByUrl('/getResults');
-      
+        
     });
 
   }

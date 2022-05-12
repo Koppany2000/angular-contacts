@@ -10,11 +10,34 @@
     </div>
 
     <span>
-        <button type="submit">
-            Update
+        <button class="btn btn-primary" type="submit">
+            GetResults
         </button>
     </span>            
 </form>
-<ul>
-    <li *ngFor="let contact of contacts">{{contact.fullName}}</li>
-</ul>
+
+
+<ng-container *ngIf="updatePressed">
+
+
+    <table width="100%" class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>CompanyName</th>
+        </tr>
+    </thead>
+        <tr *ngFor="let contact of contacts">
+            <td >{{contact.fullName}}</td>
+            <td >{{contact.email}}</td>
+            <td >{{contact.phoneNumber}}</td>
+            <td >{{contact.companyName}}</td>
+            
+        </tr>
+       
+    
+    
+    </table>
+    </ng-container>

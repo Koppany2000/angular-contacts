@@ -16,6 +16,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { TokenInterceptor } from './token-interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LogoutComponent } from './logout/logout.component';
     GetsingleComponent,
     LoginComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

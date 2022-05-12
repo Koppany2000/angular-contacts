@@ -31,6 +31,7 @@ export class RestServiceService {
     return this.httpClient.get<Contact>('http://localhost:8080/api/contacts/'+id);
   }
   
+  
 
 }
 
