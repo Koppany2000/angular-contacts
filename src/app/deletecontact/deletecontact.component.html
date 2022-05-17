@@ -1,16 +1,27 @@
+
+
+<div class="container">
+<div class="form-group">
+
+
 <form [formGroup]="deleteForm" (ngSubmit)="deleteContact()">
 
     <div>
         <label for="id">id</label>
         <div>
-            <input type="number" id="id" [formControlName]="'id'" name="id" required
+            <input class="form-control" type="number" id="id" [formControlName]="'id'" name="id" required
                 autofocus>
         </div>
     </div>
-
+    <br>
     <span>
-        <button type="submit">
+        <button class="btn btn-primary" type="submit">
             Delete
         </button>
     </span>            
 </form>
+</div>
+<div *ngIf="deleted">
+    <br>
+    Deleted</div>
+</div>

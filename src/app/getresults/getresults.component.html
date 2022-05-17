@@ -1,43 +1,32 @@
 
-<form [formGroup]="getresultsForm" (ngSubmit)="getResults()">
-
-    <div>
-        <label for="id">id</label>
-        <div>
-            <input type="number" id="id" [formControlName]="'id'" name="id" required
-                autofocus>
-        </div>
-    </div>
-
-    <span>
-        <button class="btn btn-primary" type="submit">
-            GetResults
-        </button>
-    </span>            
-</form>
-
-
 <ng-container *ngIf="updatePressed">
 
 
     <table width="100%" class="table">
         <thead class="table-dark">
         <tr>
+            <th>Id</th>
             <th>Fullname</th>
             <th>Email</th>
             <th>PhoneNumber</th>
             <th>CompanyName</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
     </thead>
         <tr *ngFor="let contact of contacts">
+            <td><a [routerLink]="['/getSingle',contact.id]">{{contact.id}}</a></td>
             <td >{{contact.fullName}}</td>
             <td >{{contact.email}}</td>
             <td >{{contact.phoneNumber}}</td>
             <td >{{contact.companyName}}</td>
+            <td><a class="nav-link" [routerLink]="['/update',contact?.id]">Update</a></td>
+            <td><a class="nav-link" [routerLink]="['/delete',contact?.id]">Delete</a></td>
             
         </tr>
        
-    
+   
     
     </table>
+    <mat-paginator [pageSize]="10" [length]="50" (page)="onPaginateChange($event)"></mat-paginator>
     </ng-container>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Contact } from '../Contact';
 import { Contacts } from '../Contacts';
@@ -17,14 +17,37 @@ export class GetsingleComponent implements OnInit {
   contact:Contact;
   updatePressed:boolean=false;
 
-  constructor(private restService:RestServiceService, private router:Router) {  }
+  constructor(private restService:RestServiceService, private router:Router ,private route:ActivatedRoute) {  }
 
   ngOnInit(): void {
     this.singleForm= new FormGroup({
       id:new FormControl('')});
+      if(this.route.snapshot.paramMap.has('id')){
+      const id= Number(this.route.snapshot.paramMap.get('id'));
+      if(id!==null){
+        this.getSingleRouted(id);
+      }
+      }
 
+      
     
   }
+
+  getSingleRouted(id:number){
+    this.updatePressed=true;
+    
+    this.restService.getSingle(id).subscribe(
+      (response:Contact)=> {
+        this.contact=response;
+      
+    
+      }
+    );
+}
+
+  
+
+
 
   getSingle(){
     

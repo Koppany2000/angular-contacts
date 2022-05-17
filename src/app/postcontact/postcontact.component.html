@@ -1,50 +1,69 @@
+<div class="container">
+
 <form [formGroup]="postForm" (ngSubmit)="post()">
-    <div>
+    <h2>New Contact</h2>
+    <div class ="form-group" >
         <label for="firstName">Firstname</label>
         <div>
-            <input type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
+            
+            <input placeholder= "Firstname" type="text" class = "form-control" id="firstName" [formControlName]="'firstName'" name="firstName" required
                 autofocus>
+            
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="lastName">Lastname</label>
-        <div>
-            <input type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
+        <div >
+           
+            <input matInput placeholder= "Lastname" class = "form-control" type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
                 autofocus>
+           
         </div>
     </div>
-    <div>
+    <div class ="form-group" >
         <label for="companyId">Company</label>
         <div>
-            <input type="number" id="companyId" [formControlName]="'companyId'" name="companyId" required
+       
+            <input matInput placeholder= "Companyid" type="number"  class = "form-control" id="companyId" [formControlName]="'companyId'" name="companyId" required
                 autofocus>
+           
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="email">Email</label>
         <div>
-            <input type="text" id="email" [formControlName]="'email'" name="email" required
+            
+            <input matInput placeholder= "Email" type="text"  class = "form-control" id="email" [formControlName]="'email'" name="email" required
                 autofocus>
+            
         </div>
     </div>
-    <div>
+    <div class ="form-group" >
         <label for="phoneNumber">Phonenumber</label>
         <div>
-            <input type="text" id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
+          
+            <input matInput placeholder= "Phonenumber" type="text" id="phoneNumber"  class = "form-control" [formControlName]="'phoneNumber'" name="phoneNumber" required
                 autofocus>
+            
         </div>
     </div>
     <div>
         <label for="comment">Comment</label>
         <div>
-            <input type="text" id="comment" [formControlName]="'comment'" name="comment" required
+            
+            <input matInput placeholder= "Comment" type="text" id="comment" [formControlName]="'comment'"  class = "form-control" name="comment" required
                 autofocus>
+            
         </div>
     </div>
-
+    <div class="form-group"> 
+        <br>
+    
     <span>
         <button  class="btn btn-primary" type="submit">
             Post
         </button>
-    </span>            
+    </span>   
+</div>         
 </form>
+</div>

@@ -1,59 +1,64 @@
+
+<div class="container">
+
 <form [formGroup]="updateForm" (ngSubmit)="update()">
 
-    <div>
+    <h2>Update Contact</h2>
+    <div class ="form-group" >
         <label for="id">id</label>
         <div>
-            <input type="number" id="id" [formControlName]="'id'" name="id" required
+            <input class = "form-control"  type="number" id="id" [formControlName]="'id'" name="id" required
                 autofocus>
         </div>
     </div>
 
-    <div>
+    <div class ="form-group">
         <label for="firstName">Firstname</label>
         <div>
-            <input type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
+            <input class = "form-control"  type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
                 autofocus>
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="lastName">Lastname</label>
         <div>
-            <input type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
+            <input class = "form-control"  type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
                 autofocus>
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="companyId">Company</label>
         <div>
-            <input type="number" id="companyId" [formControlName]="'companyId'" name="companyId" required
+            <input type="number" class = "form-control"  id="companyId" [formControlName]="'companyId'" name="companyId" required
                 autofocus>
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="email">Email</label>
         <div>
-            <input type="text" id="email" [formControlName]="'email'" name="email" required
+            <input type="text" class = "form-control" id="email" [formControlName]="'email'" name="email" required
                 autofocus>
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="phoneNumber">Phonenumber</label>
         <div>
-            <input type="text" id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
+            <input type="text" class = "form-control"  id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
                 autofocus>
         </div>
     </div>
-    <div>
+    <div class ="form-group">
         <label for="comment">Comment</label>
         <div>
-            <input type="text" id="comment" [formControlName]="'comment'" name="comment" required
+            <input type="text" class = "form-control"  id="comment" [formControlName]="'comment'" name="comment" required
                 autofocus>
         </div>
     </div>
-
+    <br>
     <span>
         <button class="btn btn-primary" type="submit">
             Update
         </button>
     </span>            
 </form>
+</div>

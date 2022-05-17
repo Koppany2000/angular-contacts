@@ -17,6 +17,9 @@ import { TokenInterceptor } from './token-interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
+import { GraphqlComponent } from './graphql/graphql.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { UsersComponent } from './users/users.component';
     LoginComponent,
     NavbarComponent,
     LogoutComponent,
-    UsersComponent
+    UsersComponent,
+    GraphqlComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { UsersComponent } from './users/users.component';
     ReactiveFormsModule,
     AppRoutingModule,
     NgxWebstorageModule.forRoot(),
-    NgbModule
+    NgbModule,
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

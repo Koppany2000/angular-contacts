@@ -1,0 +1,39 @@
+
+<form [formGroup]="graphForm" (ngSubmit)="getGraphQL()" id="form">
+
+    <input type="text" class="form-control" [formControlName]="'query'" name="query" required
+    autofocus>
+    
+
+    <span>
+        <button class="btn btn-primary" type="submit">
+            GetGraphQL
+        </button>
+    </span>            
+</form>
+
+<ng-container *ngIf="buttonPressed">
+
+
+    <table width="100%" class="table table-success table-striped table-hover">
+        <tr>
+            <td>{{graphresponse?.data?.contact.lastName}}</td>
+            <td>{{graphresponse?.data?.contact.firstName}}</td>
+            <td>{{graphresponse?.data?.contact.email}} </td>
+            <td>{{graphresponse?.data?.contact.phoneNumber}} </td>
+           
+        </tr>
+       
+    
+    
+    </table>
+    </ng-container>
+
+
+
+
+
+
+
+
+

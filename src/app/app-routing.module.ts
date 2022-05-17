@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DeletecontactComponent } from './deletecontact/deletecontact.component';
 import { GetresultsComponent } from './getresults/getresults.component';
 import { GetsingleComponent } from './getsingle/getsingle.component';
+import { GraphqlComponent } from './graphql/graphql.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { PostcontactComponent } from './postcontact/postcontact.component';
@@ -18,7 +19,11 @@ const routes: Routes = [
    { path: 'delete', component: DeletecontactComponent },
    { path: 'getSingle', component: GetsingleComponent },
    { path: 'post', component: PostcontactComponent },
-   { path: 'logout', component: LogoutComponent }
+   { path: 'logout', component: LogoutComponent },
+   { path: 'graphql', component: GraphqlComponent },
+   { path: 'getSingle/:id', component: GetsingleComponent },
+   { path: 'delete/:id', component: DeletecontactComponent },
+   { path: 'update/:id', component: UpdatecontactComponent }
 ];
 
 @NgModule({

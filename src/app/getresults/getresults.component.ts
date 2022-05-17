@@ -14,15 +14,18 @@ export class GetresultsComponent implements OnInit {
   updatePressed:boolean=false;
   contacts:Contacts[];
   getresultsForm:FormGroup;
+  id:number=0;
   constructor(private restService:RestServiceService,private router:Router) { }
 
   ngOnInit(): void {
     this.getresultsForm= new FormGroup({
       id:new FormControl('')});
+      this.getResults();
   }
   getResults(){
     this.updatePressed=true;
-    this.restService.get(this.getresultsForm.get('id').value).subscribe(data => {
+    this.id=this.getresultsForm.get('id').value;
+    this.restService.get(this.id).subscribe(data => {
       this.contacts=data;
       if(data){
         this.router.navigateByUrl('/getResults');
@@ -31,4 +34,16 @@ export class GetresultsComponent implements OnInit {
       }
     });
 }
-}
+onPaginateChange(event){
+  this.id=event.pageIndex;
+  this.restService.get(this.id).subscribe(data => {
+    this.contacts=data;
+    if(data){
+      this.router.navigateByUrl('/getResults');
+    }
+    else{
+    }
+  });
+
+}}
+

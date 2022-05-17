@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Contact } from '../Contact';
 import { PostPayload } from '../post.payload';
 import { RestServiceService } from '../rest-service.service';
 
@@ -14,6 +15,7 @@ export class PostcontactComponent implements OnInit {
 
   postForm: FormGroup;
   postPayload:PostPayload;
+  contact:Contact;
 
   constructor(private restService:RestServiceService,private router:Router ) { 
     this.postPayload={
@@ -47,7 +49,9 @@ export class PostcontactComponent implements OnInit {
     
     this.restService.post(this.postPayload).subscribe(data => {
       if(data){
-        this.router.navigateByUrl('/getResults');
+        this.contact=data;
+       
+        this.router.navigateByUrl('/getSingle/'+ this.contact.id);
       }
       else{
         

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Contact } from '../Contact';
 import { RestServiceService } from '../rest-service.service';
 import { UpdatePayload } from '../update.payload';
 
@@ -14,7 +15,8 @@ export class UpdatecontactComponent implements OnInit {
 
   updateForm: FormGroup;
   updatePayload:UpdatePayload;
-  constructor(private restService:RestServiceService,private router:Router ) {
+  contact:Contact;
+  constructor(private restService:RestServiceService,private router:Router,private route:ActivatedRoute) {
     this.updatePayload={
       id:null,
       firstName:'',
@@ -29,7 +31,7 @@ export class UpdatecontactComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateForm= new FormGroup({
-      id:new FormControl(''),
+      id:new FormControl(this.route.snapshot.paramMap.get('id')),
       firstName:new FormControl(''),
       lastName:new FormControl(''),
       companyId:new FormControl(null),
@@ -50,8 +52,12 @@ export class UpdatecontactComponent implements OnInit {
     
     
     this.restService.update(this.updatePayload).subscribe(data => {
+
+
+      this.contact=data;
+
       if(data){
-        this.router.navigateByUrl('/getSingle');
+        this.router.navigateByUrl('/getSingle/'+this.contact.id);
       }
       else{
         
