@@ -1,5 +1,6 @@
 <div class="container">
 
+    <br>
 <form [formGroup]="postForm" (ngSubmit)="post()">
     <h2>New Contact</h2>
     <div class ="form-group" >
@@ -23,9 +24,14 @@
     <div class ="form-group" >
         <label for="companyId">Company</label>
         <div>
-       
-            <input matInput placeholder= "Companyid" type="number"  class = "form-control" id="companyId" [formControlName]="'companyId'" name="companyId" required
-                autofocus>
+            <select class = "form-control" [formControlName]="'companyId'" name="companyId">
+                <option value=1>Company #1</option>
+                <option value=2>Company #2</option>
+                <option value=3>Company #3</option>
+                <option value=0 disabled selected hidden>Select your option</option>
+                
+              </select>
+        
            
         </div>
     </div>
@@ -42,7 +48,7 @@
         <label for="phoneNumber">Phonenumber</label>
         <div>
           
-            <input matInput placeholder= "Phonenumber" type="text" id="phoneNumber"  class = "form-control" [formControlName]="'phoneNumber'" name="phoneNumber" required
+            <input matInput placeholder= "+36" type="text" id="phoneNumber"  class = "form-control" [formControlName]="'phoneNumber'" name="phoneNumber" required
                 autofocus>
             
         </div>

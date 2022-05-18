@@ -1,4 +1,4 @@
-
+<br>
 <div class="container">
 
 <form [formGroup]="updateForm" (ngSubmit)="update()">
@@ -7,7 +7,7 @@
     <div class ="form-group" >
         <label for="id">id</label>
         <div>
-            <input class = "form-control"  type="number" id="id" [formControlName]="'id'" name="id" required
+            <input placeholder= "id" class = "form-control"  type="number" id="id" [formControlName]="'id'" name="id" required
                 autofocus>
         </div>
     </div>
@@ -15,42 +15,47 @@
     <div class ="form-group">
         <label for="firstName">Firstname</label>
         <div>
-            <input class = "form-control"  type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
+            <input placeholder= "Firstame" class = "form-control"  type="text" id="firstName" [formControlName]="'firstName'" name="firstName" required
                 autofocus>
         </div>
     </div>
     <div class ="form-group">
         <label for="lastName">Lastname</label>
         <div>
-            <input class = "form-control"  type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
+            <input placeholder= "Lastname"  class = "form-control"  type="text" id="lastName" [formControlName]="'lastName'" name="lastName" required
                 autofocus>
         </div>
     </div>
     <div class ="form-group">
         <label for="companyId">Company</label>
         <div>
-            <input type="number" class = "form-control"  id="companyId" [formControlName]="'companyId'" name="companyId" required
-                autofocus>
+            <select class = "form-control" [formControlName]="'companyId'">
+                
+                <option value=1>Company #1</option>
+                <option value=2>Company #2</option>
+                <option value=3>Company #3</option>
+                <option value=0 disabled selected hidden>Select your option</option>
+              </select>
         </div>
     </div>
     <div class ="form-group">
         <label for="email">Email</label>
         <div>
-            <input type="text" class = "form-control" id="email" [formControlName]="'email'" name="email" required
+            <input placeholder= "Email" type="text" class = "form-control" id="email" [formControlName]="'email'" name="email" required
                 autofocus>
         </div>
     </div>
     <div class ="form-group">
         <label for="phoneNumber">Phonenumber</label>
         <div>
-            <input type="text" class = "form-control"  id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
+            <input placeholder="+36" type="text" class = "form-control"  id="phoneNumber" [formControlName]="'phoneNumber'" name="phoneNumber" required
                 autofocus>
         </div>
     </div>
     <div class ="form-group">
         <label for="comment">Comment</label>
         <div>
-            <input type="text" class = "form-control"  id="comment" [formControlName]="'comment'" name="comment" required
+            <input placeholder= "Comment" type="text" class = "form-control"  id="comment" [formControlName]="'comment'" name="comment" required
                 autofocus>
         </div>
     </div>

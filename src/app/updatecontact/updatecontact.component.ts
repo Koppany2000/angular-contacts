@@ -21,7 +21,7 @@ export class UpdatecontactComponent implements OnInit {
       id:null,
       firstName:'',
       lastName:'',
-      companyId:null,
+      companyId:0,
       email:'',
       phoneNumber:'',
       comment:''

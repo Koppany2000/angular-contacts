@@ -1,6 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, ViewChild} from '@angular/core';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,9 @@ import { UsersComponent } from './users/users.component';
 import { GraphqlComponent } from './graphql/graphql.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSortModule} from '@angular/material/sort';
+
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -42,8 +45,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AppRoutingModule,
     NgxWebstorageModule.forRoot(),
     NgbModule,
+    FormsModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

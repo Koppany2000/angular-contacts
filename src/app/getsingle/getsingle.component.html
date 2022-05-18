@@ -1,6 +1,11 @@
-<ng-container *ngIf="updatePressed">
+<ng-container *ngIf="updatePressed && isNotNull">
 
 
+   
+    <div class="container">
+      
+    <h1>Details</h1>
+    
     <table width="100%" class="table table-success table-striped table-hover">
         <tr>
             <th>LastName</th>
@@ -22,15 +27,18 @@
             <td><a class="nav-link" [routerLink]="['/delete',contact?.id]">Delete</a></td>
         </tr>
        
-    
+        
     
     </table>
+</div>
     </ng-container>
-    
+    <ng-container *ngIf="!updatePressed">  
 <div class="container">
+    <br>
+    <h1>Get Single Contact</h1>
     <div class ="form-group" >
     <form [formGroup]="singleForm" (ngSubmit)="getSingle()">
-    
+        <br>
         <div>
             <label for="id">id</label>
             <div>
@@ -47,5 +55,6 @@
     </form>
     </div>
 </div>
+</ng-container>
 
 

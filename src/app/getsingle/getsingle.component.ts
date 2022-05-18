@@ -16,10 +16,12 @@ export class GetsingleComponent implements OnInit {
   singleForm: FormGroup;
   contact:Contact;
   updatePressed:boolean=false;
+  isNotNull:boolean=false;
 
   constructor(private restService:RestServiceService, private router:Router ,private route:ActivatedRoute) {  }
 
   ngOnInit(): void {
+    
     this.singleForm= new FormGroup({
       id:new FormControl('')});
       if(this.route.snapshot.paramMap.has('id')){
@@ -35,7 +37,7 @@ export class GetsingleComponent implements OnInit {
 
   getSingleRouted(id:number){
     this.updatePressed=true;
-    
+    this.isNotNull=true;
     this.restService.getSingle(id).subscribe(
       (response:Contact)=> {
         this.contact=response;
@@ -50,6 +52,13 @@ export class GetsingleComponent implements OnInit {
 
 
   getSingle(){
+    if(this.singleForm.get('id').value){
+      this.isNotNull=true;
+      
+    }
+    else{
+      return;
+    }
     
     this.updatePressed=true;
     

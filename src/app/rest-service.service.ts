@@ -35,6 +35,12 @@ export class RestServiceService {
   getGraphQL(graphql:Graphql): Observable<GraphResponse>{
     return this.httpClient.post<GraphResponse>('http://localhost:8080/rest/contacts',graphql,{headers: new HttpHeaders({ 'Content-Type':'text/plain'})});
   }
+  getBySearch(search:string):Observable<Contacts[]>{
+    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/search/?pageNo='+search);
+  }
+  getByCompany(search:string):Observable<Contacts[]>{
+    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/companySearch/?pageNo='+search);
+  }
   
   
   
