@@ -117,6 +117,7 @@ searchCompany(event:string){
   }
    );
 }else{
+  this.event2=event;
   this.getResults();
 }}
 else{
@@ -145,6 +146,7 @@ else{
 
 onPaginateChange(event){
   if(this.event2!="" && this.searchbyname==true){
+    
   
  this.restService.getBySearch(this.event2+","+event.pageIndex).subscribe(data =>{
   this.contacts2=data;
@@ -171,7 +173,17 @@ onPaginateChange(event){
   }
    );
 }else{
-  this.getResults();
+  
+  this.id=event.pageIndex;
+  this.restService.get(this.id).subscribe(data => {
+    this.contacts2=data;
+    this.dataSource=this.contacts;
+    if(data){
+      this.router.navigateByUrl('/getResults');
+    }
+    else{
+    }
+  });
 }
 
   }
@@ -180,6 +192,7 @@ onPaginateChange(event){
   
   
   else{
+    
   this.id=event.pageIndex;
   this.restService.get(this.id).subscribe(data => {
     this.contacts2=data;

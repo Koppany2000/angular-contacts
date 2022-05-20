@@ -1,23 +1,26 @@
 
  <header>
   <ul nz-menu nzTheme="dark" nzMode="horizontal">
-    <ng-container *ngIf="authService.isLoggedIn(); then logout; else login">
+    <ng-container *ngIf="!authService.isLoggedIn(); then login;">
     </ng-container>
-    <ng-template #login>
-    <li nz-menu-item><a class="navbar-brand" href="login">Login</a> </li>
+  <ng-template #login>
+    <ng-container>
+    <li nz-menu-item><a class="navbar-brand" href="login">Login</a></li>
+  </ng-container>
   </ng-template>
-  <ng-template #logout>
-    <li nz-menu-item><a class="navbar-brand" href="logout">Logout</a></li>
-  </ng-template>
+ 
+  
+ 
   <ng-container *ngIf="authService.isLoggedIn()">
-    <li nz-menu-item><a class="nav-link" href="getResults">GetResults</a></li>
-    <li nz-menu-item><a class="nav-link" href="getSingle">GetSingleResult</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="logout">Logout</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="getResults">GetResults</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="getSingle">GetSingleResult</a></li>
     <ng-container *ngIf="authService.isAdmin()">
-    <li nz-menu-item><a class="nav-link" href="post">Post</a></li>
-    <li nz-menu-item><a class="nav-link" href="update">Update</a></li>
-    <li nz-menu-item><a class="nav-link" href="delete">Delete</a></li>
-    <li nz-menu-item> <a class="nav-link" href="graphql">Graphql</a></li>
-    <li nz-menu-item> <a class="nav-link" href="antDesign">AntDesign</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="post">Post</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="update">Update</a></li>
+    <li nz-menu-item><a class="navbar-brand" href="delete">Delete</a></li>
+    <li nz-menu-item> <a class="navbar-brand" href="graphql">Graphql</a></li>
+    <li nz-menu-item> <a class="navbar-brand" href="antDesign">AntDesign</a></li>
   </ng-container>
 
 
