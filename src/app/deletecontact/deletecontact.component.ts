@@ -33,4 +33,8 @@ export class DeletecontactComponent implements OnInit {
   }
 
 }
+cancel(){
+    
+}
+
 }

@@ -4,6 +4,7 @@ import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { GetresultsComponent } from './getresults/getresults.component';
@@ -23,6 +24,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSortModule} from '@angular/material/sort';
 
 import {MatTableModule} from '@angular/material/table';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { AntDesignComponent } from './ant-design/ant-design.component';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -36,7 +48,8 @@ import {MatTableModule} from '@angular/material/table';
     NavbarComponent,
     LogoutComponent,
     UsersComponent,
-    GraphqlComponent
+    GraphqlComponent,
+    AntDesignComponent
   ],
   imports: [
     BrowserModule,
@@ -45,17 +58,23 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     NgxWebstorageModule.forRoot(),
     NgbModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MDBBootstrapModule.forRoot(),
+    NzTableModule,
+    NzDropDownModule,
+    NzResultModule,
+    NzLayoutModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,
     multi:true
-  }],
+  },{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { UpdatePayload } from './update.payload';
 import { Contact } from './Contact';
 import { Graphql } from './Graphql';
 import { GraphResponse } from './GraphResponse';
+import { Contactsreturned } from './Contactsreturned';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class RestServiceService {
 
 
 
-  get(id:number):Observable<Contacts[]>{
-    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/?pageNo='+id);
+  get(id:number):Observable<Contactsreturned>{
+    return this.httpClient.get<Contactsreturned>('http://localhost:8080/api/contacts/?pageNo='+id);
   }
   post(postPayload:PostPayload): Observable<Contact>{
     return this.httpClient.post<Contact>('http://localhost:8080/api/contacts/',postPayload);
@@ -35,11 +36,19 @@ export class RestServiceService {
   getGraphQL(graphql:Graphql): Observable<GraphResponse>{
     return this.httpClient.post<GraphResponse>('http://localhost:8080/rest/contacts',graphql,{headers: new HttpHeaders({ 'Content-Type':'text/plain'})});
   }
-  getBySearch(search:string):Observable<Contacts[]>{
-    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/search/?pageNo='+search);
+  getBySearch(search:string):Observable<Contactsreturned>{
+    return this.httpClient.get<Contactsreturned>('http://localhost:8080/api/contacts/search/?pageNo='+search);
   }
-  getByCompany(search:string):Observable<Contacts[]>{
-    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/companySearch/?pageNo='+search);
+  getByCompany(search:string):Observable<Contactsreturned>{
+    return this.httpClient.get<Contactsreturned>('http://localhost:8080/api/contacts/companySearch/?pageNo='+search);
+  }
+
+  getBySearchAndCompany(search:string):Observable<Contactsreturned>{
+    return this.httpClient.get<Contactsreturned>('http://localhost:8080/api/contacts/search2/?pageNo='+search);
+  }
+
+  getAll():Observable<Contacts[]>{
+    return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/getAll/');
   }
   
   

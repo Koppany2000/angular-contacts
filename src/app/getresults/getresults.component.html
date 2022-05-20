@@ -31,7 +31,7 @@
             <th>Delete</th>
         </tr>
     </thead>
-        <tr *ngFor="let contact of contacts">
+        <tr *ngFor="let contact of contacts2.list">
             <td><a class="button2" [routerLink]="['/getSingle',contact.id]">{{contact.id}}</a></td>
             <td >{{contact.fullName}}</td>
             <td >{{contact.email}}</td>
@@ -46,7 +46,7 @@
         
         
     </table>
-    <mat-paginator [pageSize]="10" [length]="60" (page)="onPaginateChange($event)"></mat-paginator>
+    <mat-paginator #paginator [pageSize]="10" [length]="10*contacts2.number" (page)="onPaginateChange($event)"></mat-paginator>
 </div>
     </ng-container>
 

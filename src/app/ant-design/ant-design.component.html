@@ -1,0 +1,28 @@
+
+
+<br>
+<br>
+<div class="container">
+<nz-table #basicTable [nzData]="contacts"  nzShowSizeChanger>
+    <thead>
+      <tr>
+          <th [nzSortFn]="listOfColumn[0].compare" [nzSortPriority]="listOfColumn[0].priority">{{listOfColumn[0].title}}</th>
+          <th [nzSortFn]="listOfColumn[1].compare" [nzSortPriority]="listOfColumn[1].priority">{{listOfColumn[1].title}}</th>
+          <th [nzSortFn]="listOfColumn[2].compare" [nzSortPriority]="listOfColumn[2].priority">{{listOfColumn[2].title}}</th>
+          <th [nzSortFn]="listOfColumn[3].compare" [nzSortPriority]="listOfColumn[3].priority">{{listOfColumn[3].title}}</th>
+          <th [nzSortFn]="listOfColumn[4].compare" [nzSortPriority]="listOfColumn[4].priority">{{listOfColumn[4].title}}</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.id }}</td>
+        <td>{{ data.fullName }}</td>
+        <td>{{ data.companyName }}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.phoneNumber}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+ 
+</div>

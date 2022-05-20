@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AntDesignComponent } from './ant-design/ant-design.component';
 import { DeletecontactComponent } from './deletecontact/deletecontact.component';
 import { GetresultsComponent } from './getresults/getresults.component';
 import { GetsingleComponent } from './getsingle/getsingle.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
    { path: 'graphql', component: GraphqlComponent },
    { path: 'getSingle/:id', component: GetsingleComponent },
    { path: 'delete/:id', component: DeletecontactComponent },
-   { path: 'update/:id', component: UpdatecontactComponent }
+   { path: 'update/:id', component: UpdatecontactComponent },
+   { path: 'antDesign', component: AntDesignComponent }
+   
 ];
 
 @NgModule({
