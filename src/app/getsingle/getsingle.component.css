@@ -3,8 +3,24 @@
     justify-content: center;
   }
 
-  a:link, a:visited {
+
+  
+
+
+
+.update{
+    background-color: #20dd49;
+}
+.button{
     background-color: #f44336;
+}
+.button2{
+    background-color: #7c7dd6;
+}
+
+
+a:link, a:visited {
+    
     color: white;
     padding: 7px 12px;
     text-align: center;

@@ -7,8 +7,13 @@
     <thead>
       <tr>
           <th [nzSortFn]="listOfColumn[0].compare" [nzSortPriority]="listOfColumn[0].priority">{{listOfColumn[0].title}}</th>
-          <th [nzSortFn]="listOfColumn[1].compare" [nzSortPriority]="listOfColumn[1].priority">{{listOfColumn[1].title}}</th>
-          <th [nzSortFn]="listOfColumn[2].compare" [nzSortPriority]="listOfColumn[2].priority">{{listOfColumn[2].title}}</th>
+          <th  nzCustomFilter [nzSortFn]="listOfColumn[1].compare" [nzSortPriority]="listOfColumn[1].priority">{{listOfColumn[1].title}}
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+              <i nz-icon nzType="search"></i>
+            </nz-filter-trigger>
+          </th>
+          <th [nzSortFn]="listOfColumn[2].compare" [nzSortPriority]="listOfColumn[2].priority" [nzFilters]="listOfColumn[2].listOfFilter" 
+          [nzFilterFn]="listOfColumn[2].filterFn" [nzFilterMultiple]="listOfColumn[2].filterMultiple" >{{listOfColumn[2].title}}</th>
           <th [nzSortFn]="listOfColumn[3].compare" [nzSortPriority]="listOfColumn[3].priority">{{listOfColumn[3].title}}</th>
           <th [nzSortFn]="listOfColumn[4].compare" [nzSortPriority]="listOfColumn[4].priority">{{listOfColumn[4].title}}</th>
         
@@ -24,5 +29,14 @@
       </tr>
     </tbody>
   </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>
  
 </div>

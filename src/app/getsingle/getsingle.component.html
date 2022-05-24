@@ -23,8 +23,8 @@
             <td>{{contact?.email}} </td>
             <td>{{contact?.phoneNumber}} </td>
             <td>{{contact?.companyName}}</td>
-            <td><a class="nav-link" [routerLink]="['/update',contact?.id]">Update</a></td>
-            <td><a class="nav-link" [routerLink]="['/delete',contact?.id]">Delete</a></td>
+            <td><a class="button" class="update" [routerLink]="['/update',{id:contact?.id,fname:contact?.firstName,lname:contact?.lastName,email:contact?.email,phoneNumber:contact?.phoneNumber}]">Update</a></td>
+            <td><a class="button"  [routerLink]="['/delete',contact?.id]">Delete</a></td>
         </tr>
        
         

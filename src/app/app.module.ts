@@ -33,6 +33,9 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 
 registerLocaleData(en);
 
@@ -68,7 +71,9 @@ registerLocaleData(en);
     NzTableModule,
     NzDropDownModule,
     NzResultModule,
-    NzLayoutModule
+    NzLayoutModule,
+    NzNotificationModule,
+    NzIconModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

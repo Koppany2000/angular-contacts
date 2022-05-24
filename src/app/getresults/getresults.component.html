@@ -31,13 +31,14 @@
             <th>Delete</th>
         </tr>
     </thead>
-        <tr *ngFor="let contact of contacts2.list">
+        <tr *ngFor="let contact of contacts2?.list">
+            
             <td><a class="button2" [routerLink]="['/getSingle',contact.id]">{{contact.id}}</a></td>
             <td >{{contact.fullName}}</td>
             <td >{{contact.email}}</td>
             <td >{{contact.phoneNumber}}</td>
             <td >{{contact.companyName}}</td>
-            <td><a class="button" class="update" [routerLink]="['/update',contact?.id]">Update</a></td>
+            <td><a class="button" class="update" [routerLink]="['/update',{id:contact.id,name:contact.fullName,email:contact.email,phoneNumber:contact.phoneNumber}]">Update</a></td>
             <td><a class="button"  [routerLink]="['/delete',contact?.id]">Delete</a></td>
             
         </tr>
@@ -46,7 +47,7 @@
         
         
     </table>
-    <mat-paginator #paginator [pageSize]="10" [length]="10*contacts2.number" (page)="onPaginateChange($event)"></mat-paginator>
+    <mat-paginator #paginator [pageSize]="10" [length]="10*contacts2?.number" (page)="onPaginateChange($event)"></mat-paginator>
 </div>
     </ng-container>
 

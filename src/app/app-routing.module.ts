@@ -25,6 +25,7 @@ const routes: Routes = [
    { path: 'getSingle/:id', component: GetsingleComponent },
    { path: 'delete/:id', component: DeletecontactComponent },
    { path: 'update/:id', component: UpdatecontactComponent },
+   { path: 'update', component: UpdatecontactComponent },
    { path: 'antDesign', component: AntDesignComponent }
    
 ];

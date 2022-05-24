@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../Contact';
@@ -14,6 +14,8 @@ export class UpdatecontactComponent implements OnInit {
 
 
   updateForm: FormGroup;
+  @Input('con')
+  contact2:Contact;
   updatePayload:UpdatePayload;
   contact:Contact;
   constructor(private restService:RestServiceService,private router:Router,private route:ActivatedRoute) {
@@ -30,8 +32,32 @@ export class UpdatecontactComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.route.snapshot.paramMap.get('name')!=null){
     this.updateForm= new FormGroup({
       id:new FormControl(this.route.snapshot.paramMap.get('id')),
+      firstName:new FormControl(this.route.snapshot.paramMap.get('name').split(" ")[0]),
+      lastName:new FormControl(this.route.snapshot.paramMap.get('name').split(" ")[1]),
+      companyId:new FormControl(null),
+      email:new FormControl(this.route.snapshot.paramMap.get('email')),
+      phoneNumber:new FormControl(this.route.snapshot.paramMap.get('phoneNumber')),
+      comment:new FormControl(''),
+    })
+  }
+  else if(this.route.snapshot.paramMap.get('fname')!=null){
+    this.updateForm= new FormGroup({
+      id:new FormControl(this.route.snapshot.paramMap.get('id')),
+      firstName:new FormControl(this.route.snapshot.paramMap.get('fname')),
+      lastName:new FormControl(this.route.snapshot.paramMap.get('lname')),
+      companyId:new FormControl(null),
+      email:new FormControl(this.route.snapshot.paramMap.get('email')),
+      phoneNumber:new FormControl(this.route.snapshot.paramMap.get('phoneNumber')),
+      comment:new FormControl(''),
+    })
+
+
+  }else{
+    this.updateForm= new FormGroup({
+      id:new FormControl(''),
       firstName:new FormControl(''),
       lastName:new FormControl(''),
       companyId:new FormControl(null),
@@ -39,6 +65,8 @@ export class UpdatecontactComponent implements OnInit {
       phoneNumber:new FormControl(''),
       comment:new FormControl(''),
     })
+
+  }
   }
 
   update(){
