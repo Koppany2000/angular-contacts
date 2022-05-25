@@ -40,6 +40,9 @@ mat-paginator {
 
 
 }
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 .update{
     background-color: #20dd49;
 }

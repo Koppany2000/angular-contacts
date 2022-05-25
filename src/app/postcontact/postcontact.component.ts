@@ -53,10 +53,9 @@ export class PostcontactComponent implements OnInit {
        
         this.router.navigateByUrl('/getSingle/'+ this.contact.id);
       }
-      else{
-        
-      }
-    });
+      
+    },(error) =>{console.error('error caught')
+    this.router.navigateByUrl('/error/'+3) });
 
   }
 

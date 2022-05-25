@@ -17,6 +17,7 @@ export class GetsingleComponent implements OnInit {
   contact:Contact;
   updatePressed:boolean=false;
   isNotNull:boolean=false;
+  
 
   constructor(private restService:RestServiceService, private router:Router ,private route:ActivatedRoute) {  }
 
@@ -52,15 +53,17 @@ export class GetsingleComponent implements OnInit {
 
 
   getSingle(){
+    this.updatePressed=true;
     if(this.singleForm.get('id').value){
       this.isNotNull=true;
       
     }
     else{
+      this.isNotNull=false;
       return;
     }
     
-    this.updatePressed=true;
+    
     
     this.restService.getSingle(this.singleForm.get('id').value).subscribe(
       (response:Contact)=> {
@@ -69,6 +72,7 @@ export class GetsingleComponent implements OnInit {
     
       }
     );
+  
 }
 
 }

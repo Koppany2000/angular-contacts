@@ -1,0 +1,44 @@
+
+
+
+<ng-container *ngIf="error==null">
+
+
+<nz-result nzStatus="403" nzTitle="403" nzSubTitle="Sorry, Wrong username or password">
+    <div nz-result-extra>
+      <button nz-button nzType="primary" (click)="click()">Back Home</button>
+    </div>
+  </nz-result>
+
+</ng-container>
+
+<ng-container *ngIf="error=='1'">
+
+
+    <nz-result nzStatus="500" nzTitle="405" nzSubTitle="Sorry, Wrong Id">
+        <div nz-result-extra>
+          <button nz-button nzType="primary" (click)="click2()">Back</button>
+        </div>
+      </nz-result>
+    
+    </ng-container>
+    <ng-container *ngIf="error=='2'">
+
+
+        <nz-result nzStatus="500" nzTitle="400" nzSubTitle="Sorry, Wrong Id">
+            <div nz-result-extra>
+              <button nz-button nzType="primary" (click)="click3()">Back</button>
+            </div>
+          </nz-result>
+        
+        </ng-container>
+        <ng-container *ngIf="error=='3'">
+
+
+            <nz-result nzStatus="500" nzTitle="400" nzSubTitle="Sorry, Wrong Id">
+                <div nz-result-extra>
+                  <button nz-button nzType="primary" (click)="click4()">Back</button>
+                </div>
+              </nz-result>
+            
+            </ng-container>

@@ -90,7 +90,8 @@ export class UpdatecontactComponent implements OnInit {
       else{
         
       }
-    });
+    },(error) =>{console.error('error caught')
+    this.router.navigateByUrl('/error/'+1)});
 
   }
 

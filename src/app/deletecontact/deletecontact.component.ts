@@ -20,17 +20,19 @@ export class DeletecontactComponent implements OnInit {
 
   }
   deleteContact(){
-    if(confirm("Are you sure?")){
+    
     this.deleted=true;
     this.restService.delete(this.deleteForm.get('id').value).subscribe(data => {
       if(data){
         this.router.navigateByUrl('/getResults');
       }
       else{
+        return;
         
       }
-    });
-  }
+    },(error) =>{console.error('error caught')
+    this.router.navigateByUrl('/error/'+2) });
+  
 
 }
 cancel(){

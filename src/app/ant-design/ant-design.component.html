@@ -3,9 +3,19 @@
 <br>
 <br>
 <div class="container">
+  <div class="send-request">
+    <button
+      nz-button
+      nzType="primary"
+      [nzLoading]="loading"
+      (click)="sendRequest()"
+    >
+      Send Email
+    </button>
 <nz-table #basicTable [nzData]="contacts"  nzShowSizeChanger>
     <thead>
       <tr>
+        <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
           <th [nzSortFn]="listOfColumn[0].compare" [nzSortPriority]="listOfColumn[0].priority">{{listOfColumn[0].title}}</th>
           <th  nzCustomFilter [nzSortFn]="listOfColumn[1].compare" [nzSortPriority]="listOfColumn[1].priority">{{listOfColumn[1].title}}
             <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
@@ -21,6 +31,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
+        <td
+            [nzChecked]="setOfCheckedId.has(data.id)"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"
+          ></td>
         <td>{{ data.id }}</td>
         <td>{{ data.fullName }}</td>
         <td>{{ data.companyName }}</td>
@@ -33,7 +47,7 @@
     <div class="ant-table-filter-dropdown">
       <div class="search-box">
         <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
-        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button"> <i nz-icon nzType="search"></i>Search</button>
         <button nz-button nzSize="small" (click)="reset()">Reset</button>
       </div>
     </div>

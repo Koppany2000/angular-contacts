@@ -5,6 +5,7 @@ import { Contacts } from '../Contacts';
 import { RestServiceService } from '../rest-service.service';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { NzNotificationPlacement, NzNotificationService } from 'ng-zorro-antd/notification';
+import { EmailDto } from '../EmailDto';
 
 @Component({
   selector: 'app-ant-design',
@@ -16,7 +17,12 @@ export class AntDesignComponent implements OnInit {
 
   contacts:Contacts[];
   searchValue = '';
-  
+  emailDto:EmailDto={email:"",fullName:"",companyName:""};
+  sent=false;
+  checked = false;
+  indeterminate = false;
+  loading = false;
+  setOfCheckedId = new Set<number>();
   visible=false;
   contacts2:Contacts[];
   listOfFilter: NzTableFilterList;
@@ -57,6 +63,7 @@ export class AntDesignComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+   
     
     this.getResults();
     /*
@@ -97,6 +104,47 @@ export class AntDesignComponent implements OnInit {
   search(): void {
     this.visible = false;
     this.contacts = this.contacts.filter((item: Contacts) => item.fullName.indexOf(this.searchValue) !== -1);
+  }
+  sendRequest(): void {
+    this.loading = true;
+    this.sent=false;
+    const requestData = this.contacts.filter(data => this.setOfCheckedId.has(data.id));
+    console.log(requestData);
+    requestData.forEach(element => {
+      this.emailDto.email=element.email;
+      this.emailDto.companyName=element.companyName;
+      this.emailDto.fullName=element.fullName;
+      this.restService.sendEmail(this.emailDto).subscribe(data =>{
+        this.sent=data;
+  
+      });
+      
+      
+    });
+   
+    this.loading=false;
+    
+  }
+  refreshCheckedStatus(): void {
+    const listOfEnabledData =this.contacts;
+    this.checked = listOfEnabledData.every(({ id }) => this.setOfCheckedId.has(id));
+    this.indeterminate = listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id)) && !this.checked;
+  }
+  onItemChecked(id: number, checked: boolean): void {
+    this.updateCheckedSet(id, checked);
+    this.refreshCheckedStatus();
+  }
+  updateCheckedSet(id: number, checked: boolean): void {
+    if (checked) {
+      this.setOfCheckedId.add(id);
+    } else {
+      this.setOfCheckedId.delete(id);
+    }
+  }
+  onAllChecked(checked: boolean): void {
+    this.contacts
+      .forEach(({ id }) => this.updateCheckedSet(id, checked));
+    this.refreshCheckedStatus();
   }
 
   

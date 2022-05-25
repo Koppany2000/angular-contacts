@@ -8,6 +8,7 @@ import { Contact } from './Contact';
 import { Graphql } from './Graphql';
 import { GraphResponse } from './GraphResponse';
 import { Contactsreturned } from './Contactsreturned';
+import { EmailDto } from './EmailDto';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,9 @@ export class RestServiceService {
 
   getAll():Observable<Contacts[]>{
     return this.httpClient.get<Contacts[]>('http://localhost:8080/api/contacts/getAll/');
+  }
+  sendEmail(emailDto: EmailDto):Observable<boolean>{
+    return this.httpClient.post<boolean>('http://localhost:8080/api/email/',emailDto);
   }
   
   

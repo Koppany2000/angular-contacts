@@ -35,6 +35,9 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { ErrorComponent } from './error/error.component';
 
 
 registerLocaleData(en);
@@ -52,7 +55,8 @@ registerLocaleData(en);
     LogoutComponent,
     UsersComponent,
     GraphqlComponent,
-    AntDesignComponent
+    AntDesignComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,9 @@ registerLocaleData(en);
     NzResultModule,
     NzLayoutModule,
     NzNotificationModule,
-    NzIconModule
+    NzIconModule,
+    NzButtonModule,
+    NzPopconfirmModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

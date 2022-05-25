@@ -19,6 +19,7 @@ export class GraphqlComponent implements OnInit {
   graphresponse:GraphResponse;
   graphdata:Data;
   graph:Graphql;
+  filled=false;
   constructor(private restService:RestServiceService, private router:Router) { }
 
   ngOnInit(): void {
@@ -27,10 +28,19 @@ export class GraphqlComponent implements OnInit {
       query:new FormControl('')});
   }
 
-
+  isFilled(){
+    if(this.graphForm.get('query').value!="")
+    {
+      console.log(this.graphForm.get('query').value)
+    this.filled= true;
+    }
+    else
+    this.filled=false;
+      
+  }
   getGraphQL(){
     this.buttonPressed=true;
-
+    this.isFilled();
     this.restService.getGraphQL(this.graphForm.get('query').value).subscribe(
       (response:GraphResponse)=> {
         
@@ -41,6 +51,8 @@ export class GraphqlComponent implements OnInit {
       }
       
     );
+
+    
     
    
    
