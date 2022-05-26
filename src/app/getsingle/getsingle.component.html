@@ -65,7 +65,7 @@
       
     </div>
     </ng-container>
-    <ng-container *ngIf="updatePressed && !isNotNull">  
+    <ng-container *ngIf="updatePressed && !isNotNull && contact?.lastName==null">  
         <div class="container">
             <br>
             <nz-result nzStatus="warning" nzTitle="There are some problems with your operation">

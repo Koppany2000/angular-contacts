@@ -50,7 +50,7 @@ export class PostcontactComponent implements OnInit {
     this.restService.post(this.postPayload).subscribe(data => {
       if(data){
         this.contact=data;
-       
+        
         this.router.navigateByUrl('/getSingle/'+ this.contact.id);
       }
       

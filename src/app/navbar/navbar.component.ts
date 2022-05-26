@@ -8,7 +8,7 @@ import { AuthService } from '../auth-service.service';
 })
 export class NavbarComponent implements OnInit {
 
-
+public vertical=true;
   
 
   constructor(public authService:AuthService) { 
@@ -17,6 +17,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+  }
+
+  change(){
+    this.vertical=!this.vertical;
     
   }
 

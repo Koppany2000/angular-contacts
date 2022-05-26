@@ -1,7 +1,31 @@
 
+<nz-layout class="h-100">
+
+    
+<ng-container *ngIf="!getVertical()">    
+<nz-sider [nzTrigger]="null" nzHeigth="100%">
+<app-navbar></app-navbar>
+<button class="verticalChange1" (click)="changeVertical()"> <i nz-icon nzType="swap" nzTheme="outline"></i></button>
+</nz-sider>
+</ng-container>
+
+<ng-container *ngIf="getVertical()"> <header>
+
 
 <app-navbar></app-navbar>
+<button  class="verticalChange2" (click)="changeVertical()"> <i nz-icon nzType="swap" nzTheme="outline"></i></button>
+</header>
+</ng-container>
 
-
+<nz-layout>
+    
+       
+  
+   
 <router-outlet></router-outlet>
+
+
+</nz-layout>
+</nz-layout>
+
 

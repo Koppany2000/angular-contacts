@@ -1,11 +1,12 @@
 import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Contacts } from '../Contacts';
 import { RestServiceService } from '../rest-service.service';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { NzNotificationPlacement, NzNotificationService } from 'ng-zorro-antd/notification';
 import { EmailDto } from '../EmailDto';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-ant-design',
@@ -14,11 +15,12 @@ import { EmailDto } from '../EmailDto';
 })
 export class AntDesignComponent implements OnInit {
 
-
+  
   contacts:Contacts[];
   searchValue = '';
   emailDto:EmailDto={email:"",fullName:"",companyName:""};
   sent=false;
+  moreThanOne=false;
   checked = false;
   indeterminate = false;
   loading = false;
@@ -26,7 +28,7 @@ export class AntDesignComponent implements OnInit {
   visible=false;
   contacts2:Contacts[];
   listOfFilter: NzTableFilterList;
-  constructor(private restService:RestServiceService,private router:Router,private notification: NzNotificationService) { }
+  constructor(private restService:RestServiceService,private router:Router,private notification: NzNotificationService,private message: NzMessageService) { }
   listOfColumn = [
     {
       title: 'Id',
@@ -75,6 +77,7 @@ export class AntDesignComponent implements OnInit {
     this.createBasicNotification('topRight');
     */
     
+   
     
   }
   
@@ -145,6 +148,36 @@ export class AntDesignComponent implements OnInit {
     this.contacts
       .forEach(({ id }) => this.updateCheckedSet(id, checked));
     this.refreshCheckedStatus();
+  }
+  deleteRequest(): void {
+    
+    const requestData = this.contacts.filter(data => this.setOfCheckedId.has(data.id));
+    console.log("asdasdasdas")
+    requestData.forEach(element =>{
+      this.restService.delete(element.id).subscribe(data => {
+        
+      },(error) =>{console.error('error caught')
+      this.router.navigateByUrl('/error/'+2) });
+    
+
+    })
+    
+    location.reload();
+    
+   
+
+    
+  }
+  updateRequest(): void {
+
+    const requestData = this.contacts.filter(data => this.setOfCheckedId.has(data.id));
+    if(requestData.length>1){
+      this.moreThanOne=true;
+      return;
+    }
+    this.router.navigate(['/update',{id:requestData[0].id,name:requestData[0].fullName,email:requestData[0].email,phoneNumber:requestData[0].phoneNumber}])
+    
+  
   }
 
   

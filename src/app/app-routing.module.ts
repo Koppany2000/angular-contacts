@@ -29,7 +29,8 @@ const routes: Routes = [
    { path: 'update', component: UpdatecontactComponent },
    { path: 'antDesign', component: AntDesignComponent },
    { path: 'error', component: ErrorComponent },
-   { path: 'error/:id', component: ErrorComponent }
+   { path: 'error/:id', component: ErrorComponent },
+   { path: '', component: LoginComponent }
    
 ];
 

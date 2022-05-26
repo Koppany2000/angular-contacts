@@ -12,6 +12,27 @@
     >
       Send Email
     </button>
+    <button
+      nz-button
+      nzType="primary"
+      nzDanger     
+      [nzLoading]="loading"
+      (click)="deleteRequest()"
+    >
+      Delete
+    </button>
+    <button
+      nz-button
+      nzType="primary"   
+      [nzLoading]="loading"
+      (click)="updateRequest()"
+    >
+      Update
+    </button>
+
+    <ng-container *ngIf="moreThanOne">
+      Please only select one id
+    </ng-container>
 <nz-table #basicTable [nzData]="contacts"  nzShowSizeChanger>
     <thead>
       <tr>

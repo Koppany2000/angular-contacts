@@ -5,6 +5,7 @@ import { Data } from '../Data';
 import { Graphql } from '../Graphql';
 import { GraphResponse } from '../GraphResponse';
 import { RestServiceService } from '../rest-service.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-graphql',
@@ -20,7 +21,7 @@ export class GraphqlComponent implements OnInit {
   graphdata:Data;
   graph:Graphql;
   filled=false;
-  constructor(private restService:RestServiceService, private router:Router) { }
+  constructor(private restService:RestServiceService, private router:Router,private message:NzMessageService) { }
 
   ngOnInit(): void {
 
@@ -45,12 +46,14 @@ export class GraphqlComponent implements OnInit {
       (response:GraphResponse)=> {
         
         this.graphresponse=response;
-      
+        if(this.graphresponse!=null)
+          this.createMessage();
         
     
       }
       
     );
+    
 
     
     
@@ -58,6 +61,9 @@ export class GraphqlComponent implements OnInit {
    
 
     
+}
+createMessage(): void {
+  this.message.create('success', `Success`);
 }
 
 }

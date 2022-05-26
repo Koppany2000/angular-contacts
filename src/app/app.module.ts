@@ -38,6 +38,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { ErrorComponent } from './error/error.component';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 registerLocaleData(en);
@@ -79,7 +80,8 @@ registerLocaleData(en);
     NzNotificationModule,
     NzIconModule,
     NzButtonModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
+    NzMessageModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

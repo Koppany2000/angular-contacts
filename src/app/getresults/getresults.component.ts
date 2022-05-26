@@ -121,9 +121,6 @@ onPaginateChange(event){
       }
 }
   
-  
-  
-  
   else{
     
   this.id=event.pageIndex;
